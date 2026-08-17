@@ -1,0 +1,2508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SudoinSTEM | Young Professionals Network</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --blue: #00b8f2;
+        --green: #00924c;
+        --red: #e22029;
+        --yellow: #ffe61b;
+        --dark: #111111;
+        --white: #ffffff;
+        --off: #f6f8f7;
+        --muted: #555555;
+        --border: #e2e2e2;
+        --font: "Plus Jakarta Sans", system-ui, sans-serif;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font);
+        color: var(--dark);
+        background: var(--white);
+      }
+
+      /* ── NAV ─────────────────────────────────────────────── */
+      .nav {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        padding: 0 40px;
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        gap: 24px;
+      }
+      .nav-logo {
+        cursor: pointer;
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 4px;
+      }
+      .nav-link {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font);
+        font-size: 13.5px;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        color: #333;
+        padding: 8px 13px;
+        border-radius: 4px;
+        transition: color 0.15s;
+      }
+      .nav-link:hover {
+        color: var(--green);
+      }
+      .nav-link.active {
+        color: var(--green);
+      }
+      .nav-donate {
+        background: var(--yellow);
+        border: none;
+        cursor: pointer;
+        font-family: var(--font);
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: var(--dark);
+        padding: 11px 24px;
+        border-radius: 4px;
+        transition: opacity 0.15s;
+      }
+      .nav-donate:hover {
+        opacity: 0.85;
+      }
+
+      /* ── HERO ─────────────────────────────────────────────── */
+      .hero {
+        position: relative;
+        min-height: 560px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+            circle at 20% 20%,
+            rgba(0, 184, 242, 0.14),
+            transparent 22%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 230, 27, 0.08),
+            transparent 24%
+          ),
+          linear-gradient(135deg, #003d20 0%, #001a0e 52%, #001229 100%);
+        overflow: hidden;
+        padding: 18px 24px 28px;
+      }
+      .hero-inner {
+        position: relative;
+        width: min(1200px, 100%);
+        min-height: 500px;
+      }
+      .hero-bg-letters {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 60px;
+        gap: 0;
+        pointer-events: none;
+      }
+      .hero-bg-letter {
+        font-size: 260px;
+        font-weight: 800;
+        line-height: 1;
+        opacity: 0.04;
+        letter-spacing: -12px;
+      }
+      .hero-network {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .hero-network svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .network-line {
+        stroke: rgba(255, 255, 255, 0.1);
+        stroke-width: 0.85;
+        fill: none;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 500px;
+        padding: 24px 20px 12px;
+      }
+      .hero-eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--blue);
+        margin-bottom: 16px;
+      }
+      .hero-headline {
+        font-size: clamp(38px, 5vw, 72px);
+        font-weight: 800;
+        line-height: 1.05;
+        color: var(--white);
+        margin-bottom: 24px;
+        max-width: 760px;
+      }
+      .hero-headline span {
+        color: var(--yellow);
+      }
+      .hero-sub {
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.7;
+        max-width: 760px;
+        margin-bottom: 32px;
+        font-weight: 400;
+      }
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(90px, 1fr));
+        gap: 16px;
+        width: min(680px, 100%);
+        margin-bottom: 32px;
+      }
+      .hero-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 12px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(6px);
+      }
+      .hero-stat strong {
+        color: var(--yellow);
+        font-size: clamp(24px, 2vw, 36px);
+        line-height: 1;
+        font-weight: 800;
+      }
+      .hero-stat span {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 11px;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .btn-yellow {
+        background: var(--yellow);
+        color: var(--dark);
+        border: none;
+        cursor: pointer;
+        font-family: var(--font);
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        padding: 15px 30px;
+        border-radius: 4px;
+        transition: opacity 0.15s;
+      }
+      .btn-yellow:hover {
+        opacity: 0.88;
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--white);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        font-family: var(--font);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        padding: 13px 26px;
+        border-radius: 4px;
+        transition: border-color 0.15s;
+      }
+      .btn-ghost:hover {
+        border-color: rgba(255, 255, 255, 0.9);
+      }
+      .member-card {
+        position: absolute;
+        width: 148px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 16px 32px rgba(4, 11, 18, 0.18);
+        animation: floatCard 7s ease-in-out infinite;
+        opacity: 0;
+        animation-fill-mode: both;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        z-index: 1;
+      }
+      .member-card.featured {
+        width: 168px;
+        padding: 12px 14px;
+      }
+      .member-card.featured .member-avatar {
+        width: 48px;
+        height: 48px;
+      }
+      .member-card.compact {
+        width: 128px;
+        padding: 8px 10px;
+      }
+      .member-card.compact .member-avatar {
+        width: 36px;
+        height: 36px;
+      }
+      .member-card.compact .member-name {
+        font-size: 10px;
+      }
+      .member-card.compact .member-role {
+        font-size: 9px;
+      }
+      .member-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 20px 36px rgba(4, 11, 18, 0.24);
+      }
+      .member-card:nth-child(odd) {
+        animation-delay: 0.2s;
+      }
+      .member-card:nth-child(3n) {
+        animation-delay: 0.5s;
+      }
+      .member-card:nth-child(4n) {
+        animation-delay: 0.8s;
+      }
+      .member-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        flex-shrink: 0;
+      }
+      .member-meta {
+        min-width: 0;
+      }
+      .member-name {
+        display: block;
+        color: var(--white);
+        font-size: 11px;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .member-role {
+        display: block;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 10px;
+        line-height: 1.35;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .member-card.card-1 {
+        left: 0.5%;
+        top: 4%;
+        animation-delay: 0.05s;
+      }
+      .member-card.card-2 {
+        left: 1%;
+        top: 70%;
+        animation-delay: 0.25s;
+      }
+      .member-card.card-3 {
+        left: 12%;
+        top: 2%;
+        animation-delay: 0.45s;
+      }
+      .member-card.card-4 {
+        right: 1%;
+        top: 4%;
+        animation-delay: 0.65s;
+      }
+      .member-card.card-5 {
+        right: 0.5%;
+        top: 68%;
+        animation-delay: 0.85s;
+      }
+      .member-card.card-6 {
+        right: 2%;
+        bottom: 2%;
+        animation-delay: 1.05s;
+      }
+      .member-card.card-7 {
+        left: 14%;
+        bottom: 2%;
+        animation-delay: 1.2s;
+      }
+      .member-card.card-8 {
+        left: 2%;
+        bottom: 4%;
+        animation-delay: 1.4s;
+      }
+      @keyframes floatCard {
+        0%,
+        100% {
+          transform: translateY(0px);
+          opacity: 0;
+        }
+        15% {
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+        100% {
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+      @media (max-width: 900px) {
+        .hero {
+          min-height: 700px;
+        }
+        .member-card {
+          width: 132px;
+        }
+        .member-card.featured {
+          width: 148px;
+        }
+        .member-card.compact {
+          width: 116px;
+        }
+      }
+      /* ── LIGHT THEME HERO ───────────────────────────────── */
+      .hero.hero-light {
+        background: linear-gradient(
+          135deg,
+          #f9faf9 0%,
+          #f3f8f6 50%,
+          #ecf4f1 100%
+        );
+      }
+      .hero.hero-light .hero-headline {
+        color: var(--dark);
+      }
+      .hero.hero-light .hero-headline span {
+        color: var(--green);
+      }
+      .hero.hero-light .hero-eyebrow {
+        color: var(--green);
+      }
+      .hero.hero-light .hero-sub {
+        color: #555;
+      }
+      .hero.hero-light .member-card {
+        background: rgba(0, 148, 76, 0.08);
+        border: 1px solid rgba(0, 148, 76, 0.18);
+      }
+      .hero.hero-light .member-name {
+        color: var(--dark);
+      }
+      .hero.hero-light .member-role {
+        color: #777;
+      }
+      .hero.hero-light .hero-stat {
+        background: rgba(0, 148, 76, 0.06);
+        border: 1px solid rgba(0, 148, 76, 0.14);
+      }
+      .hero.hero-light .hero-stat strong {
+        color: var(--green);
+      }
+      .hero.hero-light .hero-stat span {
+        color: #666;
+      }
+      .hero.hero-light .btn-ghost {
+        color: var(--dark);
+        border: 2px solid rgba(0, 148, 76, 0.3);
+      }
+      .hero.hero-light .btn-ghost:hover {
+        border-color: rgba(0, 148, 76, 0.8);
+      }
+      .hero.hero-light .network-line {
+        stroke: rgba(0, 148, 76, 0.1);
+      }
+      .hero.hero-light .hero-bg-letter {
+        opacity: 0.03;
+      }
+
+      @media (max-width: 700px) {
+        .hero {
+          padding: 36px 18px;
+          min-height: 760px;
+        }
+        .hero-content {
+          min-height: 500px;
+          padding-top: 80px;
+        }
+        .hero-sub {
+          font-size: 15px;
+        }
+        .hero-stats {
+          grid-template-columns: repeat(2, minmax(120px, 1fr));
+          width: min(420px, 100%);
+        }
+        .member-card {
+          width: 110px;
+        }
+        .member-card.featured {
+          width: 130px;
+        }
+        .member-card.compact {
+          display: none;
+        }
+        .member-card.card-1 {
+          left: 1%;
+          top: 8%;
+        }
+        .member-card.card-2 {
+          left: 1%;
+          top: 68%;
+        }
+        .member-card.card-4 {
+          right: 2%;
+          top: 8%;
+        }
+        .member-card.card-6 {
+          right: 1%;
+          bottom: 4%;
+        }
+        .member-card.card-8 {
+          left: 2%;
+          bottom: 6%;
+        }
+      }
+
+      /* ── GENERAL SECTIONS ────────────────────────────────── */
+      .section {
+        padding: 80px 60px;
+      }
+      .section-white {
+        background: var(--white);
+      }
+      .section-off {
+        background: var(--off);
+      }
+      .section-dark {
+        background: var(--dark);
+      }
+      .section-green {
+        background: var(--green);
+      }
+
+      .section-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .eyebrow {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 10px;
+      }
+      .eyebrow-blue {
+        color: var(--blue);
+      }
+      .eyebrow-red {
+        color: var(--red);
+      }
+      .section-heading {
+        font-size: clamp(26px, 3.5vw, 38px);
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 14px;
+      }
+      .section-sub {
+        font-size: 16px;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 600px;
+        margin-bottom: 48px;
+      }
+
+      /* ── CARDS ───────────────────────────────────────────── */
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 22px;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 22px;
+      }
+
+      .card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 28px;
+      }
+      .card-top-bar {
+        height: 4px;
+        border-radius: 2px;
+        margin-bottom: 22px;
+      }
+      .card-title {
+        font-size: 17px;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+      .card-text {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .card-list {
+        margin-top: 12px;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+      .card-list li + li {
+        margin-top: 6px;
+      }
+
+      /* pill */
+      .pill {
+        display: inline-block;
+        padding: 3px 11px;
+        border-radius: 99px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .pill-green {
+        background: #e6f4ed;
+        color: var(--green);
+      }
+      .pill-blue {
+        background: #e0f6ff;
+        color: #007db5;
+      }
+      .pill-red {
+        background: #fde8e8;
+        color: #b51a20;
+      }
+      .pill-grey {
+        background: #f0f0f0;
+        color: #666;
+      }
+
+      /* ── INITIATIVE ROWS ─────────────────────────────────── */
+      .initiative-row {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-left: 5px solid;
+        border-radius: 6px;
+        padding: 28px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+      .initiative-info {
+        flex: 1;
+        min-width: 240px;
+      }
+      .initiative-title {
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+      .initiative-meta {
+        font-size: 13px;
+        color: #888;
+        margin-bottom: 10px;
+      }
+      .initiative-desc {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      /* ── STATS BAR ───────────────────────────────────────── */
+      .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0;
+        background: var(--green);
+      }
+      .stat-item {
+        padding: 36px 32px;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        text-align: center;
+      }
+      .stat-item:last-child {
+        border-right: none;
+      }
+      .stat-number {
+        font-size: 42px;
+        font-weight: 800;
+        color: var(--yellow);
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 6px;
+        font-weight: 500;
+      }
+
+      /* ── GLOBAL COMMUNITY ───────────────────────────────── */
+      .community-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        margin: 14px 0 28px;
+      }
+      .community-stat {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 24px 18px;
+        text-align: center;
+      }
+      .community-stat-number {
+        font-size: clamp(26px, 2vw, 38px);
+        font-weight: 800;
+        color: var(--green);
+        line-height: 1;
+      }
+      .community-stat-label {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+      }
+      .community-map-wrap {
+        background: var(--off);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 18px 18px 22px;
+      }
+      .map-shell {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        min-height: 220px;
+        max-height: 360px;
+        background: linear-gradient(180deg, #f8faf9 0%, #eef4f2 100%);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .world-map-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: saturate(0.9) contrast(1.12);
+      }
+      .map-marker {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        margin-left: -6px;
+        margin-top: -6px;
+        border-radius: 50%;
+        background: var(--marker-color, var(--green));
+        border: 2px solid rgba(255, 255, 255, 0.96);
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8),
+          0 6px 18px rgba(17, 24, 39, 0.12);
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
+          filter 0.25s ease;
+        transform-origin: center;
+        will-change: transform;
+      }
+      .map-marker:hover {
+        transform: translateY(-3px) scale(1.12);
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9),
+          0 10px 22px rgba(0, 148, 76, 0.22), 0 0 18px rgba(0, 148, 76, 0.18);
+        filter: drop-shadow(0 0 10px rgba(0, 148, 76, 0.22));
+      }
+
+      /* ── DONATE CARDS ────────────────────────────────────── */
+      .donate-card {
+        background: var(--white);
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        padding: 40px;
+        text-align: center;
+      }
+      .donate-card-title {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+      .donate-card-desc {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.65;
+        margin-bottom: 28px;
+      }
+      .btn-paypal {
+        background: #0070ba;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font);
+        font-size: 15px;
+        font-weight: 700;
+        padding: 14px 32px;
+        border-radius: 4px;
+        transition: opacity 0.15s;
+      }
+      .btn-paypal:hover {
+        opacity: 0.88;
+      }
+      .btn-cashapp {
+        background: #00d632;
+        color: #1a1a1a;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font);
+        font-size: 15px;
+        font-weight: 700;
+        padding: 14px 32px;
+        border-radius: 4px;
+        transition: opacity 0.15s;
+      }
+      .btn-cashapp:hover {
+        opacity: 0.88;
+      }
+
+      /* ── FORM ────────────────────────────────────────────── */
+      .form-wrap {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 44px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 7px;
+        color: #222;
+      }
+      .form-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1.5px solid var(--border);
+        border-radius: 5px;
+        font-family: var(--font);
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.15s;
+        color: var(--dark);
+      }
+      .form-input:focus {
+        border-color: var(--green);
+      }
+      .btn-green {
+        background: var(--green);
+        color: var(--white);
+        border: none;
+        cursor: pointer;
+        font-family: var(--font);
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        padding: 15px 36px;
+        border-radius: 4px;
+        transition: opacity 0.15s;
+      }
+      .btn-green:hover {
+        opacity: 0.88;
+      }
+
+      /* ── FAQ ─────────────────────────────────────────────── */
+      .faq-accordion {
+        width: 100%;
+      }
+      .faq-accordion-item {
+        border-bottom: 1px solid var(--border);
+      }
+      .faq-question {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        background: none;
+        border: none;
+        padding: 24px 0;
+        text-align: left;
+        font-family: var(--font);
+        cursor: pointer;
+      }
+      .faq-question-text {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--dark);
+        line-height: 1.5;
+      }
+      .faq-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        color: var(--green);
+        font-size: 26px;
+        line-height: 1;
+        font-weight: 700;
+        transition: transform 0.25s ease;
+        transform-origin: center;
+        flex-shrink: 0;
+      }
+      .faq-accordion-item.is-open .faq-icon {
+        transform: rotate(90deg);
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.35s ease, opacity 0.25s ease;
+      }
+      .faq-accordion-item.is-open .faq-answer {
+        opacity: 1;
+      }
+      .faq-answer-inner {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.75;
+        padding: 0 0 24px;
+      }
+
+      /* ── CTA BAND ─────────────────────────────────────────── */
+      .cta-band {
+        padding: 72px 60px;
+        background: var(--dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 28px;
+      }
+      .cta-band-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 28px;
+      }
+      .cta-band h2 {
+        font-size: 30px;
+        font-weight: 800;
+        color: var(--white);
+      }
+      .cta-band p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 8px;
+        max-width: 420px;
+        line-height: 1.6;
+      }
+
+      /* ── FOOTER ──────────────────────────────────────────── */
+      .footer {
+        background: #0a0a0a;
+        padding: 52px 60px 36px;
+      }
+      .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 48px;
+        flex-wrap: wrap;
+        margin-bottom: 48px;
+      }
+      .footer-brand p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1.7;
+        margin-top: 12px;
+        max-width: 260px;
+      }
+      .footer-col h4 {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 14px;
+      }
+      .footer-link {
+        display: block;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.65);
+        text-decoration: none;
+        margin-bottom: 9px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font);
+        text-align: left;
+        padding: 0;
+        transition: color 0.15s;
+      }
+      .footer-link:hover {
+        color: var(--yellow);
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .footer-bottom span {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      /* ── FOUNDER CARD ────────────────────────────────────── */
+      .founder-card {
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 40px;
+        flex-wrap: wrap;
+      }
+      .founder-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: var(--green);
+        color: var(--white);
+        font-size: 34px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .founder-info {
+        flex: 1;
+        min-width: 220px;
+      }
+      .founder-name {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .founder-role {
+        font-size: 13px;
+        color: var(--green);
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .founder-bio {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      /* ── STORY CAROUSEL ───────────────────────────────────── */
+      .story-slider-wrap {
+        display: grid;
+        grid-template-columns: 48px minmax(0, 1fr) 48px;
+        align-items: center;
+        gap: 18px;
+        margin-top: 28px;
+      }
+      .story-slider {
+        overflow: hidden;
+        border-radius: 8px;
+      }
+      .story-track {
+        display: flex;
+        transition: transform 0.45s ease;
+        will-change: transform;
+      }
+      .story-card {
+        flex: 0 0 100%;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-left: 5px solid var(--red);
+        border-radius: 8px;
+        padding: 32px 32px 28px;
+        min-height: 260px;
+      }
+      .story-step {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 14px;
+      }
+      .story-title {
+        font-size: clamp(22px, 2.4vw, 32px);
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 18px;
+      }
+      .story-body {
+        font-size: 15px;
+        line-height: 1.9;
+      }
+      .story-card-emphasis {
+        display: block;
+        margin-top: 18px;
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--green);
+        line-height: 1.6;
+      }
+      .story-transition {
+        margin-top: 28px;
+        padding: 22px 26px;
+        background: var(--off);
+        border-left: 5px solid var(--green);
+        border-radius: 8px;
+        font-size: clamp(18px, 2vw, 26px);
+        font-weight: 800;
+        color: var(--dark);
+        line-height: 1.4;
+      }
+      .story-nav {
+        width: 48px;
+        height: 48px;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        background: var(--white);
+        color: var(--dark);
+        font-size: 24px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: border-color 0.15s, transform 0.15s;
+      }
+      .story-nav:hover {
+        border-color: var(--green);
+        transform: translateY(-1px);
+      }
+      .story-nav:disabled {
+        opacity: 0.35;
+        cursor: default;
+        transform: none;
+      }
+      .story-final {
+        padding: 32px 28px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #f6f8f7, #edf8f0);
+        border: 1px solid var(--border);
+      }
+      .story-final p {
+        font-size: clamp(22px, 3vw, 34px);
+        font-weight: 800;
+        line-height: 1.35;
+        color: var(--dark);
+      }
+      .story-final p + p {
+        margin-top: 18px;
+      }
+      .story-pillar {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-left: 5px solid var(--red);
+        border-radius: 8px;
+        padding: 28px;
+      }
+      .story-pillar h3 {
+        font-size: 19px;
+        font-weight: 800;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+      .story-pillar p {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      /* ── PHOTO PLACEHOLDER ───────────────────────────────── */
+      .photo-ph {
+        background: linear-gradient(135deg, #e8f5ee, #d0eef8);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #aaa;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        min-height: 240px;
+      }
+
+      /* ── PAGE HEADER ─────────────────────────────────────── */
+      .page-header {
+        background: var(--dark);
+        padding: 64px 60px 52px;
+      }
+      .page-header-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .page-header h1 {
+        font-size: clamp(32px, 4vw, 52px);
+        font-weight: 800;
+        color: var(--white);
+        text-transform: uppercase;
+        line-height: 1.1;
+      }
+      .page-header p {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 14px;
+        max-width: 560px;
+        line-height: 1.7;
+      }
+
+      /* ── RESPONSIVE ──────────────────────────────────────── */
+      @media (max-width: 768px) {
+        .nav {
+          padding: 0 20px;
+        }
+        .nav-inner {
+          flex-wrap: wrap;
+          height: auto;
+          padding: 12px 0;
+          gap: 12px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .section,
+        .cta-band,
+        .footer {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+        .hero-content {
+          padding: 60px 24px 52px;
+        }
+        .hero-bg-letters {
+          display: none;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .story-slider-wrap {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .story-nav {
+          display: none;
+        }
+        .story-card {
+          min-height: 0;
+          padding: 24px 20px 22px;
+        }
+        .story-transition {
+          padding: 18px 20px;
+        }
+        .page-header {
+          padding: 48px 24px 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <div class="nav-logo" onclick="navigate('home')">
+          <svg width="110" height="36" viewBox="0 0 110 36" fill="none">
+            <!-- Flask icon for S -->
+            <g>
+              <path
+                d="M5 2h6"
+                stroke="#e22029"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M5 2v6.5L2 14a1.2 1.2 0 001.2 1.8h9.6A1.2 1.2 0 0014 14L11 8.5V2"
+                stroke="#e22029"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <line
+                x1="2.5"
+                y1="12.5"
+                x2="13.5"
+                y2="12.5"
+                stroke="#e22029"
+                stroke-width="1"
+                stroke-linecap="round"
+              />
+              <circle cx="6" cy="13.5" r=".8" fill="#e22029" />
+              <circle cx="10" cy="12.5" r=".6" fill="#e22029" />
+              <text
+                x="2.5"
+                y="30"
+                font-family="'Plus Jakarta Sans',sans-serif"
+                font-size="17"
+                font-weight="800"
+                fill="#e22029"
+              >
+                S
+              </text>
+            </g>
+            <!-- Chip for T -->
+            <g>
+              <rect
+                x="21"
+                y="2"
+                width="8"
+                height="8"
+                rx="1.5"
+                stroke="#00924c"
+                stroke-width="1.4"
+              />
+              <line
+                x1="23"
+                y1="0"
+                x2="23"
+                y2="2"
+                stroke="#00924c"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="27"
+                y1="0"
+                x2="27"
+                y2="2"
+                stroke="#00924c"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="23"
+                y1="10"
+                x2="23"
+                y2="12"
+                stroke="#00924c"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="27"
+                y1="10"
+                x2="27"
+                y2="12"
+                stroke="#00924c"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="19"
+                y1="4.5"
+                x2="21"
+                y2="4.5"
+                stroke="#00924c"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="29"
+                y1="4.5"
+                x2="31"
+                y2="4.5"
+                stroke="#00924c"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="19"
+                y1="7.5"
+                x2="21"
+                y2="7.5"
+                stroke="#00924c"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+              <line
+                x1="29"
+                y1="7.5"
+                x2="31"
+                y2="7.5"
+                stroke="#00924c"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+              <text
+                x="19"
+                y="30"
+                font-family="'Plus Jakarta Sans',sans-serif"
+                font-size="17"
+                font-weight="800"
+                fill="#00924c"
+              >
+                T
+              </text>
+            </g>
+            <!-- Gear for E -->
+            <g>
+              <circle
+                cx="43"
+                cy="6"
+                r="2.5"
+                stroke="#9A7A00"
+                stroke-width="1.4"
+              />
+              <path
+                d="M43 1v2M43 9v2M38 6h2M46 6h2M39.9 2.9l1.4 1.4M44.7 7.7l1.4 1.4M39.9 9.1l1.4-1.4M44.7 4.3l1.4-1.4"
+                stroke="#9A7A00"
+                stroke-width="1.4"
+                stroke-linecap="round"
+              />
+              <text
+                x="37"
+                y="30"
+                font-family="'Plus Jakarta Sans',sans-serif"
+                font-size="17"
+                font-weight="800"
+                fill="#9A7A00"
+              >
+                E
+              </text>
+            </g>
+            <!-- Ruler for M -->
+            <g>
+              <rect
+                x="53"
+                y="4"
+                width="14"
+                height="5"
+                rx="1"
+                stroke="#111111"
+                stroke-width="1.4"
+              />
+              <line
+                x1="55"
+                y1="4"
+                x2="55"
+                y2="7"
+                stroke="#111"
+                stroke-width="1"
+                stroke-linecap="round"
+              />
+              <line
+                x1="57.5"
+                y1="4"
+                x2="57.5"
+                y2="6.5"
+                stroke="#111"
+                stroke-width="1"
+                stroke-linecap="round"
+              />
+              <line
+                x1="60"
+                y1="4"
+                x2="60"
+                y2="7"
+                stroke="#111"
+                stroke-width="1"
+                stroke-linecap="round"
+              />
+              <line
+                x1="62.5"
+                y1="4"
+                x2="62.5"
+                y2="6.5"
+                stroke="#111"
+                stroke-width="1"
+                stroke-linecap="round"
+              />
+              <line
+                x1="65"
+                y1="4"
+                x2="65"
+                y2="7"
+                stroke="#111"
+                stroke-width="1"
+                stroke-linecap="round"
+              />
+              <text
+                x="53"
+                y="30"
+                font-family="'Plus Jakarta Sans',sans-serif"
+                font-size="17"
+                font-weight="800"
+                fill="#111111"
+              >
+                M
+              </text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Links -->
+        <div class="nav-links">
+          <button
+            class="nav-link active"
+            data-page="home"
+            onclick="navigate('home')"
+          >
+            Home
+          </button>
+          <button
+            class="nav-link"
+            data-page="about"
+            onclick="navigate('about')"
+          >
+            About
+          </button>
+          <button
+            class="nav-link"
+            data-page="initiatives"
+            onclick="navigate('initiatives')"
+          >
+            Initiatives
+          </button>
+          <button
+            class="nav-link"
+            data-page="connect"
+            onclick="navigate('connect')"
+          >
+            Get Connected
+          </button>
+          <button class="nav-link" data-page="faq" onclick="navigate('faq')">
+            FAQ
+          </button>
+        </div>
+
+        <!-- Donate -->
+        <button class="nav-donate" onclick="navigate('donate')">Donate</button>
+      </div>
+    </nav>
+
+    <!-- PAGE CONTENT -->
+    <main id="main"></main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div style="display: flex; gap: 6px; align-items: center">
+              <span style="font-size: 22px; font-weight: 800; color: #e22029"
+                >S</span
+              >
+              <span style="font-size: 22px; font-weight: 800; color: #00924c"
+                >T</span
+              >
+              <span style="font-size: 22px; font-weight: 800; color: #9a7a00"
+                >E</span
+              >
+              <span style="font-size: 22px; font-weight: 800; color: #fff"
+                >M</span
+              >
+            </div>
+            <p>
+              The SudoinSTEM Young Professionals Network is a community for
+              South Sudanese students and professionals in STEM to connect,
+              grow, and lead together.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Pages</h4>
+            <button class="footer-link" onclick="navigate('home')">Home</button>
+            <button class="footer-link" onclick="navigate('about')">
+              About
+            </button>
+            <button class="footer-link" onclick="navigate('initiatives')">
+              Initiatives
+            </button>
+            <button class="footer-link" onclick="navigate('donate')">
+              Donate
+            </button>
+            <button class="footer-link" onclick="navigate('connect')">
+              Get Connected
+            </button>
+            <button class="footer-link" onclick="navigate('faq')">FAQ</button>
+          </div>
+          <div class="footer-col">
+            <h4>Get involved</h4>
+            <button class="footer-link" onclick="navigate('connect')">
+              Join the community
+            </button>
+            <button class="footer-link" onclick="navigate('initiatives')">
+              Mentorship program
+            </button>
+            <button class="footer-link" onclick="navigate('donate')">
+              Make a donation
+            </button>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2025 South Sudanese in STEM. All rights reserved.</span>
+          <span>Built with purpose.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ─── PAGE TEMPLATES ──────────────────────────────────────────────────────────
+
+      const pages = {
+        home: () => `
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-bg-letters">
+        <span class="hero-bg-letter" style="color:#e22029">S</span>
+        <span class="hero-bg-letter" style="color:#00924c">T</span>
+        <span class="hero-bg-letter" style="color:#ffe61b">E</span>
+        <span class="hero-bg-letter" style="color:#fff">M</span>
+      </div>
+
+      <div class="hero-network" aria-hidden="true">
+        <svg viewBox="0 0 1200 560" preserveAspectRatio="none">
+          <!-- Top-left cluster -->
+          <path class="network-line" d="M 18 22 L 144 11"/>
+          <path class="network-line" d="M 144 11 L 36 392"/>
+          <!-- Top-right cluster -->
+          <path class="network-line" d="M 1182 22 L 1044 392"/>
+          <!-- Right cluster -->
+          <path class="network-line" d="M 1182 380 L 1056 540"/>
+          <!-- Bottom cluster -->
+          <path class="network-line" d="M 1056 540 L 168 540"/>
+          <!-- Bridge from bottom left to top left -->
+          <path class="network-line" d="M 168 540 L 36 392"/>
+        </svg>
+      </div>
+
+      <div class="member-card card-1 featured">
+        <img class="member-avatar" src="assets/member-1.png" alt="Member profile" />
+        <div class="member-meta">
+          <span class="member-name">Member Name</span>
+          <span class="member-role">Computer Science</span>
+        </div>
+      </div>
+      <div class="member-card card-2">
+        <img class="member-avatar" src="assets/member-2.png" alt="Member profile" />
+        <div class="member-meta">
+          <span class="member-name">Member Name</span>
+          <span class="member-role">Public Health</span>
+        </div>
+      </div>
+      <div class="member-card card-3 compact">
+        <img class="member-avatar" src="assets/member-3.png" alt="Member profile" />
+        <div class="member-meta">
+          <span class="member-name">Member Name</span>
+          <span class="member-role">Mechanical Engineering</span>
+        </div>
+      </div>
+      <div class="member-card card-4">
+        <img class="member-avatar" src="assets/member-4.png" alt="Member profile" />
+        <div class="member-meta">
+          <span class="member-name">Member Name</span>
+          <span class="member-role">Data Science</span>
+        </div>
+      </div>
+      <div class="member-card card-5 featured">
+        <img class="member-avatar" src="assets/member-5.png" alt="Member profile" />
+        <div class="member-meta">
+          <span class="member-name">Member Name</span>
+          <span class="member-role">Biomedical Research</span>
+        </div>
+      </div>
+      <div class="member-card card-6">
+        <img class="member-avatar" src="assets/member-6.png" alt="Member profile" />
+        <div class="member-meta">
+          <span class="member-name">Member Name</span>
+          <span class="member-role">Environmental Science</span>
+        </div>
+      </div>
+      <div class="member-card card-7 compact">
+        <img class="member-avatar" src="assets/member-7.png" alt="Member profile" />
+        <div class="member-meta">
+          <span class="member-name">Member Name</span>
+          <span class="member-role">Healthcare</span>
+        </div>
+      </div>
+      <div class="member-card card-8">
+        <img class="member-avatar" src="assets/member-8.png" alt="Member profile" />
+        <div class="member-meta">
+          <span class="member-name">Member Name</span>
+          <span class="member-role">Systems Engineering</span>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-eyebrow">SudoinSTEM Young Professionals Network</div>
+        <h1 class="hero-headline">Building the Future of <span>South Sudan</span> Through STEM</h1>
+        <p class="hero-sub">A community of South Sudanese students and professionals in science, technology, engineering, mathematics, healthcare, and beyond—connecting, mentoring, and creating impact together.</p>
+
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>50+</strong><span>Members</span></div>
+          <div class="hero-stat"><strong>8</strong><span>Countries</span></div>
+          <div class="hero-stat"><strong>25+</strong><span>Universities</span></div>
+          <div class="hero-stat"><strong>3</strong><span>Continents</span></div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn-yellow" onclick="navigate('connect')">Join the Community</button>
+          <button class="btn-ghost" onclick="navigate('about')">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-number">65+</div><div class="stat-label">Years of resilience</div></div>
+    <div class="stat-item"><div class="stat-number">1</div><div class="stat-label">Shared community</div></div>
+    <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Core values</div></div>
+    <div class="stat-item"><div class="stat-number">∞</div><div class="stat-label">Potential</div></div>
+  </div>
+
+  <!-- PILLARS -->
+  <section class="section section-white">
+    <div class="section-inner">
+      <div class="eyebrow">Why we exist</div>
+      <h2 class="section-heading">A community built on belonging, mentorship, and representation.</h2>
+      <p class="section-sub">We are building a future where South Sudanese youth are empowered to lead and innovate in STEM, with representation, inclusion, and cultural coexistence at the center of education.</p>
+      <div class="grid-3">
+        ${[
+          {
+            color: "#e22029",
+            title: "Community",
+            text: "We believe meaningful relationships are the foundation of growth. We foster a welcoming community where South Sudanese students and professionals support, encourage, and celebrate one another.",
+          },
+          {
+            color: "#00924c",
+            title: "Leadership",
+            text: "We lead with integrity, humility, and purpose. We inspire our members to create a positive impact in their professions, communities, and the world through service and excellence.",
+          },
+          {
+            color: "#00b8f2",
+            title: "Inclusion & Representation",
+            text: "We celebrate the diversity of our experiences and believe representation matters. We cultivate spaces where every member feels seen, valued, respected, and empowered.",
+          },
+        ]
+          .map(
+            (c) => `
+          <div class="card">
+            <div class="card-top-bar" style="background:${c.color}"></div>
+            <div class="card-title">${c.title}</div>
+            <div class="card-text">${c.text}</div>
+          </div>`
+          )
+          .join("")}
+      </div>
+    </div>
+  </section>
+
+  <!-- INITIATIVES PREVIEW -->
+  <section class="section section-off">
+    <div class="section-inner">
+      <div class="eyebrow">Programs & events</div>
+      <h2 class="section-heading">What we're building</h2>
+      <p class="section-sub">From mentorship and peer support to monthly community meetings and student workshops, we create spaces where South Sudanese STEM leaders can grow together.</p>
+      <div class="grid-3">
+        ${[
+          {
+            color: "#e22029",
+            tag: "Ongoing",
+            tagClass: "pill-red",
+            title: "Mentorship Program",
+            text: "A structured support network connecting South Sudanese students and young professionals with mentors who can offer guidance, opportunities, and encouragement.",
+          },
+          {
+            color: "#00924c",
+            tag: "Ongoing",
+            tagClass: "pill-green",
+            title: "Peer Support Program",
+            text: "A program that pairs young professionals for shared encouragement, accountability, and career and academic growth.",
+          },
+          {
+            color: "#00b8f2",
+            tag: "Upcoming",
+            tagClass: "pill-blue",
+            title: "Monthly Community Meetings",
+            text: "Virtual meetings featuring member-led seminars, workshops, and conversations on professional development, leadership, and STEM journeys.",
+          },
+        ]
+          .map(
+            (c) => `
+          <div class="card" style="border-left:4px solid ${c.color}">
+            <span class="pill ${c.tagClass}">${c.tag}</span>
+            <div class="card-title">${c.title}</div>
+            <div class="card-text">${c.text}</div>
+          </div>`
+          )
+          .join("")}
+      </div>
+      <div style="margin-top:32px;text-align:center">
+        <button onclick="navigate('initiatives')" style="background:none;border:2px solid #111;border-radius:4px;padding:12px 28px;font-family:var(--font);font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .15s" onmouseover="this.style.background='#111';this.style.color='#fff'" onmouseout="this.style.background='none';this.style.color='#111'">View all initiatives →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE CTA -->
+  <div class="cta-band">
+    <div class="cta-band-inner">
+      <div>
+        <h2>Support our mission</h2>
+        <p>Your contribution helps us create opportunities for South Sudanese students and professionals through STEM resources, mentoring, events, and connection.</p>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <button class="btn-yellow" onclick="navigate('donate')">Donate Now</button>
+        <button class="btn-ghost" onclick="navigate('connect')">Get Connected</button>
+      </div>
+    </div>
+  </div>
+`,
+
+        about: () => `
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow" style="color:var(--blue)">Our story</div>
+      <h1>About Us</h1>
+      <p>We are united by a shared commitment to advancing our careers, supporting one another, and investing in the next generation of innovators who will shape the future of South Sudan and communities around the world.</p>
+    </div>
+  </div>
+
+  <section class="section section-white">
+    <div class="section-inner">
+      <div class="eyebrow">Our Journey</div>
+      <h2 class="section-heading">Building community through STEM.</h2>
+
+      <div class="story-slider-wrap">
+        <button class="story-nav story-prev" type="button" aria-label="Previous story">←</button>
+        <div class="story-slider" aria-live="polite">
+          <div class="story-track">
+            ${[
+              {
+                step: "01",
+                title: "A History of Resilience",
+                body: "For more than 65 years, the people of Sudan endured one of the world's longest and most devastating civil conflicts, culminating in the independence of South Sudan in 2011. While South Sudan became the world's youngest nation, generations of its people were displaced, scattering families across Africa and around the world.",
+              },
+              {
+                step: "02",
+                title: "A Generation Displaced",
+                body: "Many South Sudanese spent their childhoods in refugee camps and neighboring countries such as Kenya, Uganda, and Ethiopia, where access to quality education was often limited. Others resettled in countries with unfamiliar cultures, languages, and expectations while carrying the weight of supporting family members both at home and abroad. Many continue to live with the lasting effects of war, displacement, and trauma.",
+              },
+              {
+                step: "03",
+                title: "Finding Our Place",
+                body: 'As the children of immigrants and first-generation students and professionals, we have been given opportunities that previous generations could only dream of. Yet these opportunities often come with unique challenges. In classrooms, laboratories, hospitals, boardrooms, and technology companies, many of us are still among the few (or the only) South Sudanese in the room. The lack of representation can create a sense of isolation and raise questions about where we belong.\n\n<span class="story-card-emphasis">The SudoinSTEM Young Professionals Network was created to change that.</span>',
+              },
+            ]
+              .map(
+                (story) => `
+                <article class="story-card" aria-label="${story.title}">
+                  <div class="story-step">${story.step}</div>
+                  <h3 class="story-title">${story.title}</h3>
+                  <div class="card-text story-body">${story.body}</div>
+                </article>`
+              )
+              .join("")}
+          </div>
+        </div>
+        <button class="story-nav story-next" type="button" aria-label="Next story">→</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section-off">
+    <div class="section-inner">
+      <div class="eyebrow">What We're Building</div>
+      <h2 class="section-heading">Our purpose in action.</h2>
+      <div class="grid-3">
+        ${[
+          {
+            color: "#e22029",
+            title: "Belonging",
+            text: "We are building a community where South Sudanese professionals can find belonging, mentorship, and encouragement from others who understand our journeys.",
+          },
+          {
+            color: "#00924c",
+            title: "Leadership",
+            text: "We believe our shared experiences, cultures, and resilience are strengths that equip us to become leaders in science, technology, engineering, mathematics, healthcare, and beyond.",
+          },
+          {
+            color: "#00b8f2",
+            title: "Impact",
+            text: "Our vision extends beyond individual success. We are committed to using our education, expertise, and God-given talents to create opportunities for the next generation and contribute to the growth of South Sudan. By investing in one another, serving as visible role models, and sharing our knowledge with both younger and older generations, we hope to inspire lasting change within our communities.",
+          },
+        ]
+          .map(
+            (c) => `
+            <div class="story-pillar" style="border-left-color:${c.color}">
+              <h3>${c.title}</h3>
+              <p>${c.text}</p>
+            </div>`
+          )
+          .join("")}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="section-inner">
+      <div class="story-final">
+        <p>We are here to remind every South Sudanese student and professional that they belong in these spaces.</p>
+        <p>Their voice matters.</p>
+        <p>Their potential is limitless.</p>
+        <p>And together, we can build a future defined not by the hardships of our past, but by the impact we create for generations to come.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="section-inner">
+      <div class="founder-card">
+        <div class="founder-avatar">NJ</div>
+        <div class="founder-info">
+          <div class="eyebrow">Founder</div>
+          <div class="founder-name">Nyabouk John Gatluak</div>
+          <div class="founder-role">Founder & Community Leader</div>
+          <div class="founder-bio">As the daughter of South Sudanese immigrants, Nyabouk has witnessed firsthand the sacrifices that make educational opportunities possible. Her father's journey began in a small village in Upper Nile, South Sudan. At just 12 years old, he sold one of his family's cows to fund his journey to Addis Ababa, Ethiopia, with the hope of one day reaching the United States. His dream was never solely for himself — it was to gain an education that would create opportunities for his family and inspire future generations. His resilience, faith, and unwavering belief in the value of education became the foundation of Nyabouk's own aspirations.</div>
+          <div class="card-text" style="margin-top:16px">Today, Nyabouk is pursuing a Ph.D. in neuroscience with the goal of becoming a pain neuroscientist leading an academic research laboratory focused on understanding the neurobiology of pain in sickle cell disease. Beyond conducting research, her greatest aspiration is to mentor future scientists, create opportunities for students from underrepresented communities, and help shape the next generation of leaders in STEM.</div>
+          <div style="margin-top:18px"><a href="https://example.com" target="_blank" style="color:var(--green);font-weight:700;text-decoration:none">Learn more about Nyabouk here →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-off">
+    <div class="section-inner">
+      <div class="grid-2">
+        <div class="card" style="border-top:5px solid var(--red)">
+          <div class="eyebrow eyebrow-red">Mission</div>
+          <div class="card-title" style="font-size:21px;margin-top:8px">What we do</div>
+          <div class="card-text" style="font-size:15px;margin-top:10px">Our mission is to unite South Sudanese professionals and students in STEM to build a supportive community that inspires innovation, drives growth, and empowers the next generation of leaders to shape the future of the world’s youngest nation.</div>
+        </div>
+        <div class="card" style="border-top:5px solid var(--green)">
+          <div class="eyebrow">Vision</div>
+          <div class="card-title" style="font-size:21px;margin-top:8px">Where we're headed</div>
+          <div class="card-text" style="font-size:15px;margin-top:10px">Our vision is a future where South Sudanese youth are empowered to lead and innovate in STEM; a world where representation, inclusion, and cultural coexistence are the foundations of education.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="section-inner">
+      <div class="eyebrow">Core values</div>
+      <h2 class="section-heading">What guides us</h2>
+      <div class="grid-3" style="margin-top:32px">
+        ${[
+          {
+            color: "#e22029",
+            v: "Community",
+            d: "We believe meaningful relationships are the foundation of growth. We foster a welcoming community where South Sudanese students and professionals support, encourage, and celebrate one another throughout every stage of their STEM journey.",
+          },
+          {
+            color: "#00924c",
+            v: "Leadership",
+            d: "We lead with integrity, humility, and purpose. We inspire our members to create a positive impact in their professions, communities, and the world through service and excellence.",
+          },
+          {
+            color: "#00b8f2",
+            v: "Inclusion & Representation",
+            d: "We celebrate the diversity of our experiences and believe representation matters. We strive to cultivate spaces where every member feels seen, valued, respected, and empowered to succeed.",
+          },
+          {
+            color: "#ffe61b",
+            textColor: "#7a6200",
+            v: "Inspiration",
+            d: "We inspire others through our stories, achievements, and dedication to making a difference.",
+          },
+          {
+            color: "#e22029",
+            v: "Impact",
+            d: "We use our education, skills, and influence to strengthen our communities and contribute to the future of South Sudan.",
+          },
+          {
+            color: "#00924c",
+            v: "Excellence",
+            d: "We pursue continuous growth and hold ourselves to the highest standards.",
+          },
+          {
+            color: "#00b8f2",
+            v: "Mentorship",
+            d: "We invest in one another by sharing knowledge, opening doors, and creating opportunities.",
+          },
+        ]
+          .map(
+            (c) => `
+          <div class="card" style="border-left:5px solid ${c.color}">
+            <div style="font-size:19px;font-weight:800;margin-bottom:10px;color:${
+              c.textColor || c.color
+            }">${c.v}</div>
+            <div class="card-text">${c.d}</div>
+          </div>`
+          )
+          .join("")}
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="cta-band-inner">
+      <div><h2>Be part of the story</h2><p>Join a growing community of South Sudanese STEM students and professionals.</p></div>
+      <button class="btn-yellow" onclick="navigate('connect')">Get Connected</button>
+    </div>
+  </div>
+`,
+
+        initiatives: () => `
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow" style="color:var(--blue)">Programs & events</div>
+      <h1>Initiatives</h1>
+      <p>Our work brings South Sudanese students and professionals together through mentorship, peer support, career development, and community-led learning.</p>
+    </div>
+  </div>
+
+  <section class="section section-white">
+    <div class="section-inner">
+      <div class="eyebrow eyebrow-red">Ongoing program</div>
+      <h2 class="section-heading">Mentorship Program</h2>
+      <p class="section-sub">The SudoinSTEM Mentorship Program is created to connect South Sudanese students and young professionals with mentors who can provide guidance, opportunities, and support, helping them achieve their educational, career, and leadership goals.</p>
+      <div class="grid-3">
+        ${[
+          {
+            title: "Why it exists",
+            text: "We recognize that pursuing a career in STEM or healthcare can be challenging, especially for first-generation students and those with limited access to mentors who understand their unique experiences.",
+          },
+          {
+            title: "Who it's for",
+            text: "South Sudanese students and professionals interested in STEM, including high school students, undergraduates, graduate students, and professionals looking to connect, grow, and give back.",
+          },
+          {
+            title: "How it works",
+            text: "Mentors and mentees meet monthly through flexible formats, including video calls, email, or asynchronous check-ins, to discuss goals, provide accountability, share resources, and support personal growth.",
+          },
+        ]
+          .map(
+            (c) => `
+          <div class="card">            <div class="card-title">${c.title}</div>
+            <div class="card-text">${c.text}</div>
+          </div>`
+          )
+          .join("")}
+      </div>
+      <div class="card" style="margin-top:22px;border-left:5px solid var(--green)">
+        <div class="card-title" style="margin-bottom:8px">Interested in joining the mentorship program?</div>
+        <div class="card-text">The next SudoinSTEM Mentorship Program cycle will open in January 2027. If you are interested in participating as a mentor or mentee, complete our interest form to receive updates, application announcements, and program information. Official applications will open on January 4, 2027.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-off">
+    <div class="section-inner">
+      <div class="eyebrow eyebrow-blue">Peer support</div>
+      <h2 class="section-heading">Peer-Support Program</h2>
+      <div class="card" style="border-left:5px solid var(--blue)">
+        <div class="card-text" style="font-size:15px;line-height:1.9">
+          <p>The SudoinSTEM peer-support program is created to connect South Sudanese young professionals who can encourage, support, and learn from one another while navigating their academic and professional journeys. Through peer partnerships, young professionals can share experiences, exchange resources, celebrate successes, navigate challenges, and support one another in achieving their academic, career, and personal goals.</p>
+          <p style="margin-top:18px">Mentorship is more than advice — it is about opening doors, building confidence, and creating pathways for others to thrive. Together, we are cultivating a community where every generation lifts the next, ensuring that South Sudanese students and professionals continue to grow, lead, and make a meaningful impact in STEM and beyond.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white">
+    <div class="section-inner">
+      <div class="eyebrow">Community events</div>
+      <h2 class="section-heading">Upcoming events</h2>
+      <div style="margin-top:32px">
+        ${[
+          {
+            color: "#00924c",
+            tag: "Virtual Meeting",
+            title: "SudoinSTEM Monthly Community Meeting",
+            date: "August 8th, 2026 · 12:00 PM CST",
+            desc: "SudoinSTEM hosts monthly virtual meetings featuring member-led seminars where professionals share their STEM journeys, career experiences, and personal stories. We also provide workshops focused on professional development, career growth, leadership, and skills to help members thrive in STEM.",
+          },
+          {
+            color: "#00b8f2",
+            tag: "Workshop",
+            title: "SudoinSTEM High School Student Informative Session",
+            date: "August 22nd, 2026 · 12:00 PM CST",
+            desc: "A virtual workshop designed for South Sudanese high school students interested in STEM. Hosted by members of the SudoinSTEM Young Professionals Network, this session will provide insight into navigating higher education, exploring different academic pathways, and learning from personal experiences.",
+          },
+        ]
+          .map(
+            (c) => `
+          <div class="initiative-row" style="border-left-color:${c.color}">
+            <div class="initiative-info">
+              <span class="pill" style="background:${c.color}18;color:${c.color};border:1px solid ${c.color}40">${c.tag}</span>
+              <div class="initiative-title">${c.title}</div>
+              <div class="initiative-meta">📅 ${c.date}</div>
+              <div class="initiative-desc">${c.desc}</div>
+            </div>
+            <button onclick="navigate('connect')" style="background:var(--green);color:#fff;border:none;cursor:pointer;font-family:var(--font);font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:11px 20px;border-radius:4px;white-space:nowrap;transition:opacity .15s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Register</button>
+          </div>`
+          )
+          .join("")}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-off">
+    <div class="section-inner">
+      <div class="eyebrow eyebrow-red">Ongoing focus</div>
+      <h2 class="section-heading">Why these programs matter</h2>
+      <div class="grid-3">
+        ${[
+          {
+            color: "#e22029",
+            title: "Access",
+            text: "We help students and professionals access guidance, networks, and career pathways that are often difficult to find on their own.",
+          },
+          {
+            color: "#00924c",
+            title: "Belonging",
+            text: "We remind every South Sudanese student and professional that they belong in STEM spaces and have a place in these communities.",
+          },
+          {
+            color: "#00b8f2",
+            title: "Impact",
+            text: "By investing in one another, we are empowering the next generation to lead, innovate, and build a stronger future for South Sudan.",
+          },
+        ]
+          .map(
+            (c) => `
+          <div class="card" style="border-top:4px solid ${c.color}">
+            <div class="card-title">${c.title}</div>
+            <div class="card-text">${c.text}</div>
+          </div>`
+          )
+          .join("")}
+      </div>
+    </div>
+  </section>
+`,
+
+        donate: () => `
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow" style="color:var(--yellow)">Support our work</div>
+      <h1>Donate</h1>
+      <p>Your support helps us create opportunities for South Sudanese students and professionals through STEM resources, mentorship, education, and community-building initiatives.</p>
+    </div>
+  </div>
+
+  <section class="section section-white">
+    <div class="section-inner">
+      <div class="grid-2" style="max-width:720px;margin:0 auto">
+
+        <div class="donate-card" style="border-color:#0070BA">
+          <div style="width:48px;height:48px;background:#0070BA;border-radius:8px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M7 13c.552 0 1-.448 1-1V8a1 1 0 00-1-1H4a1 1 0 00-1 1v4c0 .552.448 1 1 1h3zM21 8H11v2h10V8zM21 12H11v2h10v-2z" fill="white"/></svg>
+          </div>
+          <div class="donate-card-title">PayPal</div>
+          <div class="donate-card-desc">Donate securely via PayPal. One-time or recurring monthly contributions accepted.</div>
+          <button class="btn-paypal">Donate via PayPal</button>
+        </div>
+
+        <div class="donate-card" style="border-color:#ccc;opacity:.75">
+          <div style="width:48px;height:48px;background:#00D632;border-radius:8px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><text x="5" y="19" font-size="16" font-weight="800" fill="white">$</text></svg>
+          </div>
+          <div class="donate-card-title">CashApp</div>
+          <div class="donate-card-desc">CashApp donations are coming soon. Check back for updates.</div>
+          <span class="pill pill-grey" style="font-size:13px;padding:7px 16px">Coming Soon</span>
+        </div>
+
+      </div>
+      <div class="card" style="max-width:820px;margin:24px auto 0;border-left:5px solid var(--yellow)">
+        <div class="card-text" style="font-size:15px;line-height:1.9">
+          <p>The SudoinSTEM Young Professionals Network was created from a passion for uplifting our community through education, mentorship, and connection. Your support helps us create opportunities for South Sudanese students and professionals by providing access to STEM resources, building meaningful community connections, hosting educational events, organizing opportunities such as college tours, and supporting initiatives like student scholarships.</p>
+          <p style="margin-top:18px">Every contribution helps us open doors for the next generation, remind students that they belong in STEM spaces, and empower young South Sudanese leaders to pursue their goals and create an impact in their communities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-off">
+    <div class="section-inner">
+      <div class="eyebrow">Impact</div>
+      <h2 class="section-heading">Where your support goes</h2>
+      <div class="grid-3" style="margin-top:32px">
+        ${[
+          {
+            color: "#e22029",
+            title: "Mentorship programs",
+            text: "Supporting mentors and resources for student-professional pairings across institutions and career stages.",
+          },
+          {
+            color: "#00924c",
+            title: "Events & workshops",
+            text: "Funding virtual and in-person gatherings that build skills, visibility, and community bonds.",
+          },
+          {
+            color: "#00b8f2",
+            title: "Education & scholarships",
+            text: "Helping fund access to STEM resources, educational opportunities, and student support that open doors for future leaders.",
+          },
+        ]
+          .map(
+            (c) => `
+          <div class="card" style="border-top:4px solid ${c.color}">
+            <div class="card-title">${c.title}</div>
+            <div class="card-text">${c.text}</div>
+          </div>`
+          )
+          .join("")}
+      </div>
+    </div>
+  </section>
+`,
+
+        connect: () => `
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow" style="color:var(--blue)">Join us</div>
+      <h1>Get Connected</h1>
+      <p>We invite South Sudanese students and professionals to join a supportive community where mentorship, encouragement, and belonging are foundational.</p>
+    </div>
+  </div>
+
+  <section class="section section-white">
+    <div class="section-inner" style="max-width:680px">
+      <div class="form-wrap">
+        <div class="eyebrow" style="margin-bottom:4px">Member sign-up</div>
+        <h2 style="font-size:22px;font-weight:800;margin-bottom:28px">Tell us about yourself</h2>
+
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First name *</label><input class="form-input" placeholder="Amira"></div>
+          <div class="form-group"><label class="form-label">Last name *</label><input class="form-input" placeholder="Deng"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email address *</label><input class="form-input" type="email" placeholder="you@example.com"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Field of study / work *</label><input class="form-input" placeholder="e.g. Biomedical Engineering"></div>
+          <div class="form-group"><label class="form-label">School or organization *</label><input class="form-input" placeholder="e.g. ASU, Michigan, Google"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">I am a… *</label>
+          <select class="form-input" style="cursor:pointer">
+            <option value="">Select one</option>
+            <option>High school student</option>
+            <option>Undergraduate student</option>
+            <option>Graduate student</option>
+            <option>Young professional</option>
+            <option>Experienced professional</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">How did you hear about us?</label>
+          <select class="form-input" style="cursor:pointer">
+            <option value="">Select one</option>
+            <option>Friend or colleague</option>
+            <option>Social media</option>
+            <option>University or professor</option>
+            <option>Event or conference</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Anything you'd like to share? (optional)</label>
+          <textarea class="form-input" rows="4" placeholder="Tell us about yourself, what you're working on, or what you're hoping to get from this community..." style="resize:vertical"></textarea>
+        </div>
+        <button class="btn-green" style="width:100%;padding:16px;font-size:16px">Submit Application →</button>
+        <p style="font-size:12px;color:#aaa;text-align:center;margin-top:14px">We will follow up via email with next steps for mentorship and community opportunities.</p>
+      </div>
+    </div>
+  </section>
+`,
+
+        faq: () => `
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow" style="color:var(--blue)">Questions</div>
+      <h1>FAQ</h1>
+      <p>Everything you need to know about SudoinSTEM — who we are, how our programs work, and how you can take part in the community.</p>
+    </div>
+  </div>
+
+  <section class="section section-white">
+    <div class="section-inner" style="max-width:760px">
+
+      <div style="margin-bottom:40px">
+        <div class="eyebrow">About the network</div>
+        <h2 style="font-size:22px;font-weight:800;margin-top:8px;margin-bottom:20px">Who we are</h2>
+        <div class="faq-accordion">
+          ${[
+            {
+              q: "What is SudoinSTEM?",
+              a: "The SudoinSTEM Young Professionals Network is a community where South Sudanese professionals and students in STEM find belonging, build meaningful connections, and support one another through every stage of their academic and professional journeys.",
+            },
+            {
+              q: "Why was SudoinSTEM created?",
+              a: "Many South Sudanese students and professionals are among the few or only South Sudanese in their classrooms, labs, hospitals, and workplaces. We created this network to address the lack of representation and build a space where people can find belonging, mentorship, and encouragement.",
+            },
+            {
+              q: "Who is this for?",
+              a: "South Sudanese students and professionals interested in STEM, including high school students exploring STEM pathways, undergraduate and graduate students pursuing their education, and professionals looking to connect, grow, and give back to the next generation.",
+            },
+          ]
+            .map(
+              (f) => `
+                <div class="faq-accordion-item">
+                  <button class="faq-question" type="button" aria-expanded="false">
+                    <span class="faq-question-text">${f.q}</span>
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer">
+                    <div class="faq-answer-inner">${f.a}</div>
+                  </div>
+                </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+
+      <div style="margin-bottom:40px">
+        <div class="eyebrow eyebrow-red">Programs</div>
+        <h2 style="font-size:22px;font-weight:800;margin-top:8px;margin-bottom:20px">How our initiatives work</h2>
+        <div class="faq-accordion">
+          ${[
+            {
+              q: "What is the Mentorship Program?",
+              a: "The SudoinSTEM Mentorship Program connects South Sudanese students and young professionals with mentors who can provide guidance, opportunities, and support to help them achieve their educational, career, and leadership goals.",
+            },
+            {
+              q: "What is the peer-support program?",
+              a: "The peer-support program creates connections between South Sudanese young professionals who can encourage and learn from one another while navigating academic and professional journeys through shared experiences, accountability, and support.",
+            },
+            {
+              q: "How does mentorship work?",
+              a: "Mentors and mentees meet monthly through flexible formats, including video calls, email, or asynchronous check-ins, to discuss goals, provide accountability, share resources, and support personal and professional growth.",
+            },
+            {
+              q: "When does the next mentorship cycle open?",
+              a: "The next SudoinSTEM Mentorship Program cycle will open in January 2027. Official applications will open on January 4, 2027.",
+            },
+          ]
+            .map(
+              (f) => `
+                <div class="faq-accordion-item">
+                  <button class="faq-question" type="button" aria-expanded="false">
+                    <span class="faq-question-text">${f.q}</span>
+                    <span class="faq-icon" aria-hidden="true">+</span>
+                  </button>
+                  <div class="faq-answer">
+                    <div class="faq-answer-inner">${f.a}</div>
+                  </div>
+                </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+
+      <div style="background:var(--off);border-radius:8px;padding:36px;text-align:center;margin-top:8px">
+        <div style="font-size:20px;font-weight:800;margin-bottom:10px">Still have questions?</div>
+        <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.7">Use the Get Connected form to send us a message and we'll get back to you about your next steps with the community.</p>
+        <button class="btn-green" onclick="navigate('connect')">Send us a message</button>
+      </div>
+    </div>
+  </section>
+`,
+      };
+
+      function bindFaqAccordion() {
+        document.querySelectorAll(".faq-accordion-item").forEach((item) => {
+          const button = item.querySelector(".faq-question");
+          const answer = item.querySelector(".faq-answer");
+
+          if (!button || !answer) return;
+
+          const syncState = (isOpen) => {
+            item.classList.toggle("is-open", isOpen);
+            button.setAttribute("aria-expanded", String(isOpen));
+            answer.style.maxHeight = isOpen
+              ? `${answer.scrollHeight}px`
+              : "0px";
+          };
+
+          syncState(false);
+
+          button.addEventListener("click", () => {
+            const isOpen = item.classList.contains("is-open");
+            syncState(!isOpen);
+          });
+        });
+      }
+
+      function bindStoryCarousel() {
+        const slider = document.querySelector(".story-slider");
+        const track = document.querySelector(".story-track");
+        const prev = document.querySelector(".story-prev");
+        const next = document.querySelector(".story-next");
+
+        if (!slider || !track || !prev || !next) return;
+
+        const cards = Array.from(track.children);
+        let currentIndex = 0;
+
+        const updateSlider = () => {
+          const offset = currentIndex * 100;
+          track.style.transform = `translateX(-${offset}%)`;
+          prev.disabled = currentIndex === 0;
+          next.disabled = currentIndex === cards.length - 1;
+        };
+
+        prev.addEventListener("click", () => {
+          if (currentIndex > 0) {
+            currentIndex -= 1;
+            updateSlider();
+          }
+        });
+
+        next.addEventListener("click", () => {
+          if (currentIndex < cards.length - 1) {
+            currentIndex += 1;
+            updateSlider();
+          }
+        });
+
+        let startX = 0;
+        let isDragging = false;
+
+        slider.addEventListener(
+          "touchstart",
+          (event) => {
+            startX = event.touches[0].clientX;
+            isDragging = true;
+          },
+          { passive: true }
+        );
+
+        slider.addEventListener(
+          "touchmove",
+          (event) => {
+            if (!isDragging) return;
+            const diff = event.touches[0].clientX - startX;
+            if (Math.abs(diff) > 40) {
+              if (diff < 0 && currentIndex < cards.length - 1) {
+                currentIndex += 1;
+              } else if (diff > 0 && currentIndex > 0) {
+                currentIndex -= 1;
+              }
+              updateSlider();
+              isDragging = false;
+            }
+          },
+          { passive: true }
+        );
+
+        slider.addEventListener("touchend", () => {
+          isDragging = false;
+        });
+
+        updateSlider();
+      }
+
+      // ─── ROUTING ──────────────────────────────────────────────────────────────────
+      function navigate(pageId) {
+        document.getElementById("main").innerHTML = pages[pageId]();
+        document.querySelectorAll(".nav-link").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.page === pageId);
+        });
+        bindFaqAccordion();
+        bindStoryCarousel();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Init
+      navigate("home");
+    </script>
+  </body>
+</html>
